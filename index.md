@@ -1,7 +1,7 @@
 ### Welcome to simplysml Pages
 
-#this is my code. if there exist some problems, 
-##Please e-mail me by s1292103908@outlook.com.
+# this is my code. if there exist some problems, 
+## Please e-mail me by s1292103908@outlook.com.
 
 ```markdown
 #include<bits/stdc++.h>
