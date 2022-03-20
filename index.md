@@ -4,6 +4,7 @@
 ## Please e-mail me by s1292103908@outlook.com.
 
 ```markdown
+// by __simplysml__ 2022/3/19.
 #include<bits/stdc++.h>
 using namespace std;
 #define db double
@@ -73,7 +74,7 @@ class phy_1{
 				}
 				cout << "Here is the average data:: ";
 				for(int i = 0; i < 4; i++){
-					printf("%.2f ",sum[i] / num[i]);
+					printf("%.3f ",sum[i] / num[i]);
 				}
 				cout << endl;
 				return;
@@ -128,17 +129,25 @@ class phy_1{
 			return;
 		}
 		void output_ub(){
-			cout << "Here is the Ub data:: 0.03 0.03 0.03 0.03\n";
+			cout << "Here is the Ub data:: 0.012 0.012 0.012 0.012\n";
 			return;
 		}
 		db uc[4];
 		void output_uc(){
 			cout << "Here is the Uc data:: ";
 			for(int j = 0; j < 4; j++){
-				uc[j] =  pow(pow(ans[j], 2) + pow(0.02, 2), 0.5);
-				printf("%.2e ", pow(pow(ans[j], 2) + pow(0.02, 2), 0.5));
+				uc[j] =  pow(pow(ans[j], 2) + pow(0.012, 2), 0.5);
+				printf("%.2e ", pow(pow(ans[j], 2) + pow(0.012, 2), 0.5));
 			}
 			printf("\n");
+		}
+		double v,uv,um,m,rou;
+		void change(){
+			v =  pi / 4 * (mu[0] * mu[0] * mu[1] - mu[2] * mu[2] * mu[3]);
+			uv =  pi / 4 * (pow( pow(2 * mu[0] * mu[1] * uc[0], 2) + pow(mu[0] * mu[0] * uc[1], 2) + pow(2 * mu[2] * mu[3] * uc[2], 2) + pow(mu[2] * mu[2] * uc[3], 2),0.5));
+			um = 0.05/1.654;
+			m = 35.68;
+			rou = m / v;
 		}
 		public:
 			void output(){
@@ -147,11 +156,14 @@ class phy_1{
 				output_ua();
 				output_ub();
 				output_uc();
+				change();
 				printf("V= %.8e\n", pi / 4 * (mu[0] * mu[0] * mu[1] - mu[2] * mu[2] * mu[3]));
-				printf("uv= %.2e\n", pi / 4 * pow( pow(2 * mu[0] * mu[1] * uc[0], 2) + pow(mu[0] * mu[0] * uc[1], 2) + pow(2 * mu[2] * mu[3] * uc[2], 2) + pow(mu[2] * mu[2] * uc[3], 2),0.5));
-				cout << endl;
+				printf("uv= %.2e\n", pi / 4 * (pow( pow(2 * mu[0] * mu[1] * uc[0], 2) + pow(mu[0] * mu[0] * uc[1], 2) + pow(2 * mu[2] * mu[3] * uc[2], 2) + pow(mu[2] * mu[2] * uc[3], 2),0.5)));
+				printf("rou= %.2e\n", rou * 1000);
+				printf("urou=%.2e\n", pow(pow(um / v,2) + pow(log(v / 1000) * m * uv / 1000,2) , 0.5));
 			}
 };
+		
 
 int main(){
 	cout << "Please Input your data on test 1:   \n";
@@ -166,10 +178,12 @@ int main(){
 	phy_1 p(a,2.3);
 	p.fuck_the_extreme_data();
 	p.output();
+//	p.print();
 	for(int i = 0; i < 7; i++){
 		delete[] a[i];
 	}
 	delete []a;
+	system("pause");
 }
 ```
 ### Thanks for reading.
